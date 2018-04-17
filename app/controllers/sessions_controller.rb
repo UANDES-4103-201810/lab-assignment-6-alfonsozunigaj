@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		#complete this method
+		logged_in = !session[:user_id].nil?
+		if logged_in then redirect_to user_url else redirect_to root_path end 
 	end
 
 	def destroy
-		#complete this method
+		@current_user = nil
+		redirect_to root_url
 	end
 end
